@@ -3529,7 +3529,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       return this.sortOrder[i].field === field.name && this.sortOrder[i].sortField === field.sortField;
     },
     orderBy: function orderBy(field, event) {
-      if (!this.isSortable(field)) return;
+      if (!this.isSortable(field)) {
+        this.$emit(this.eventPrefix + 'title-clicked', field, event);
+        return;
+      }
 
       var key = this.multiSortKey.toLowerCase() + 'Key';
 

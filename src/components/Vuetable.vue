@@ -845,7 +845,10 @@ export default {
       return this.sortOrder[i].field === field.name && this.sortOrder[i].sortField === field.sortField
     },
     orderBy (field, event) {
-      if ( ! this.isSortable(field) ) return
+      if ( ! this.isSortable(field) ) {
+        this.$emit(this.eventPrefix + 'title-clicked', field, event);
+        return;
+      }
 
       let key = this.multiSortKey.toLowerCase() + 'Key'
 
